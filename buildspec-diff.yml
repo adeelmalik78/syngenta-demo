@@ -27,9 +27,9 @@ phases:
   post_build:
     commands:
       - echo ====== Starting Liquibase Diff ======
-      - liquibase --defaultsFile=liquibase.properties --outputFile=diff-dev.txt diff
+      - liquibase --defaultsFile=liquibase.properties diff
       - echo ====== Build completed ======
-artifacts:
-  files:
-    - diff-dev.txt
+# artifacts:
+#   files:
+#     - diff-dev.txt
 
