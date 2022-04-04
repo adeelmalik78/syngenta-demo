@@ -25,9 +25,9 @@ phases:
       # - liquibase --defaultsFile=liquibase.properties checks run
       # - liquibase --defaultsFile=liquibase.properties validate
       # - liquibase --defaultsFile=liquibase.properties tag codebuild-$CODEBUILD_BUILD_NUMBER
-      - liquibase --defaultsFile=liquibase.properties status --verbose --logLevel=info
-      - liquibase --defaultsFile=liquibase.properties updateSql
-      # - liquibase --defaultsFile=liquibase.properties update
+      - liquibase --defaultsFile=liquibase.properties status --verbose
+      # - liquibase --defaultsFile=liquibase.properties updateSql
+      - liquibase --defaultsFile=liquibase.properties update
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
