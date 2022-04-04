@@ -33,9 +33,9 @@ phases:
   post_build:
     commands:
       - echo ====== Starting Liquibase Snapshot ======
-      # - liquibase --defaultsFile=liquibase.properties --outputFile=codebuild-$CODEBUILD_BUILD_NUMBER.json snapshot --snapshotFormat=json
+      - liquibase --defaultsFile=liquibase.properties --outputFile=codebuild-$CODEBUILD_BUILD_NUMBER.json snapshot --snapshotFormat=json
       - echo ====== Build completed on `date` ======
-# artifacts:
-#   files:
-#     - codebuild-$CODEBUILD_BUILD_NUMBER.json
+artifacts:
+  files:
+    - codebuild-$CODEBUILD_BUILD_NUMBER.json
 
