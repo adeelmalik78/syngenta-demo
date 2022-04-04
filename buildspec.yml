@@ -17,8 +17,6 @@ phases:
   pre_build:
     commands:
       - liquibase --version
-      - echo LIQUIBASE_COMMAND_URL=$LIQUIBASE_COMMAND_URL
-      - echo LIQUIBASE_COMMAND_USERNAME=$LIQUIBASE_COMMAND_USERNAME
   build:
     commands:
       - echo ====== Build started on `date` ======
@@ -33,9 +31,9 @@ phases:
   post_build:
     commands:
       - echo ====== Starting Liquibase Snapshot ======
-      - liquibase --defaultsFile=liquibase.properties --outputFile=codebuild-$CODEBUILD_BUILD_NUMBER.json snapshot --snapshotFormat=json
+      - liquibase --defaultsFile=liquibase.properties --outputFile=snapshot-dev.json snapshot --snapshotFormat=json
       - echo ====== Build completed on `date` ======
-artifacts:
-  files:
-    - codebuild-$CODEBUILD_BUILD_NUMBER.json
+# artifacts:
+#   files:
+    - snapshot-dev.json
 

@@ -1,0 +1,34 @@
+version: 0.2
+    
+env:
+  LIQUIBASE_COMMAND_REFERENCE_USERNAME: postgres
+  LIQUIBASE_COMMAND_REFERENCE_PASSWORD: postgres
+  LIQUIBASE_COMMAND_REFERENCE_URL: offline:postgresql?snapshot=codebuild-dev.json
+  # secrets-manager:
+  #   LIQUIBASE_COMMAND_USERNAME: SYNGENTA_DEMO2:USERNAME
+  #   LIQUIBASE_COMMAND_PASSWORD: SYNGENTA_DEMO2:PASSWORD
+  #   LIQUIBASE_PRO_LICENSE_KEY: SYNGENTA_DEMO2:LIQUIBASE_PRO_KEY
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - liquibase --version
+  build:
+    commands:
+      - echo ====== Build started ======
+      # - liquibase --defaultsFile=liquibase.properties checks run
+      - liquibase --defaultsFile=liquibase.properties status --verbose
+      # - liquibase --defaultsFile=liquibase.properties history
+      
+  post_build:
+    commands:
+      - echo ====== Starting Liquibase Diff ======
+      - liquibase --defaultsFile=liquibase.properties --outputFile=diff-dev.txt snapshot --snapshotFormat=json
+      - echo ====== Build completed ======
+artifacts:
+  files:
+    - diff-dev.txt
+
