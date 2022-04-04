@@ -1,8 +1,6 @@
 version: 0.2
     
 env:
-  LIQUIBASE_COMMAND_REFERENCE_USERNAME: postgres
-  LIQUIBASE_COMMAND_REFERENCE_PASSWORD: postgres
   LIQUIBASE_COMMAND_REFERENCE_URL: offline:postgresql?snapshot=snapshot-dev.json
   # secrets-manager:
   #   LIQUIBASE_COMMAND_USERNAME: SYNGENTA_DEMO2:USERNAME
@@ -16,6 +14,8 @@ phases:
   pre_build:
     commands:
       - liquibase --version
+      - echo LIQUIBASE_COMMAND_REFERENCE_URL=$LIQUIBASE_COMMAND_REFERENCE_URL
+  build:
   build:
     commands:
       - echo ====== Build started ======
