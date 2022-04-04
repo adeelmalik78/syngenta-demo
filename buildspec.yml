@@ -33,7 +33,7 @@ phases:
       - echo ====== Starting Liquibase Snapshot ======
       - liquibase --defaultsFile=liquibase.properties --outputFile=snapshot-dev.json snapshot --snapshotFormat=json
       - echo ====== Build completed on `date` ======
-# artifacts:
-#   files:
+artifacts:
+  files:
     - snapshot-dev.json
 
