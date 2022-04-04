@@ -19,6 +19,7 @@ phases:
   build:
     commands:
       - echo ====== Build started on `date` ======
+      - liquibase --version
       # - liquibase --defaultsFile=liquibase.properties checks run
       # - liquibase --defaultsFile=liquibase.properties validate
       # - liquibase --defaultsFile=liquibase.properties tag codebuild-$CODEBUILD_BUILD_NUMBER
@@ -32,7 +33,7 @@ phases:
       - echo ====== Starting Liquibase Snapshot ======
       # - liquibase --defaultsFile=liquibase.properties --outputFile=codebuild-$CODEBUILD_BUILD_NUMBER.json snapshot --snapshotFormat=json
       - echo ====== Build completed on `date` ======
-artifacts:
-  files:
-    - codebuild-$CODEBUILD_BUILD_NUMBER.json
+# artifacts:
+#   files:
+#     - codebuild-$CODEBUILD_BUILD_NUMBER.json
 
