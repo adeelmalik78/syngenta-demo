@@ -16,7 +16,6 @@ phases:
       - liquibase --version
       - echo LIQUIBASE_COMMAND_REFERENCE_URL=$LIQUIBASE_COMMAND_REFERENCE_URL
   build:
-  build:
     commands:
       - echo ====== Build started ======
       # - liquibase --defaultsFile=liquibase.properties checks run
