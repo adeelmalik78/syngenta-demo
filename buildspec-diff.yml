@@ -2,7 +2,7 @@ version: 0.2
     
 env:
   variables:
-    LIQUIBASE_COMMAND_REFERENCE_URL: offline:postgresql?snapshot=$CODEBUILD_SRC_DIR_S3syngentademo/snapshot-dev.json
+    LIQUIBASE_COMMAND_REFERENCE_URL: offline:postgresql?snapshot=${CODEBUILD_SRC_DIR_S3syngentademo}/snapshot-dev.json
 
   # secrets-manager:
   #   LIQUIBASE_COMMAND_USERNAME: SYNGENTA_DEMO2:USERNAME
@@ -17,15 +17,15 @@ phases:
     commands:
       - liquibase --version
       - echo LIQUIBASE_COMMAND_REFERENCE_URL=$LIQUIBASE_COMMAND_REFERENCE_URL
+      # - echo CODEBUILD_SRC_DIR_S3syngentademo=$CODEBUILD_SRC_DIR_S3syngentademo
   build:
     commands:
       - echo ====== Build started ======
       # - liquibase --defaultsFile=liquibase.properties checks run
       - liquibase --defaultsFile=liquibase.properties status --verbose
-      - pwd
-      - ls -alh
-      - echo CODEBUILD_SRC_DIR_S3syngentademo=$CODEBUILD_SRC_DIR_S3syngentademo
-      - ls $CODEBUILD_SRC_DIR_S3syngentademo
+      # - pwd
+      # - ls -alh
+      # - ls $CODEBUILD_SRC_DIR_S3syngentademo
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
