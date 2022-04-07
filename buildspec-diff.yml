@@ -2,7 +2,7 @@ version: 0.2
     
 env:
   variables:
-    LIQUIBASE_COMMAND_REFERENCE_URL: "offline:postgresql?snapshot=snapshot-dev.json"
+    LIQUIBASE_COMMAND_REFERENCE_URL: "offline:postgresql?snapshot=$CODEBUILD_SRC_DIR_S3syngentademo/snapshot-dev.json"
 
   # secrets-manager:
   #   LIQUIBASE_COMMAND_USERNAME: SYNGENTA_DEMO2:USERNAME
