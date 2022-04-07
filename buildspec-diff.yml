@@ -24,6 +24,7 @@ phases:
       - liquibase --defaultsFile=liquibase.properties status --verbose
       - pwd
       - ls -alh
+      - echo CODEBUILD_SRC_DIR_S3syngentademo=$CODEBUILD_SRC_DIR_S3syngentademo
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
