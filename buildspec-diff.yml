@@ -22,9 +22,6 @@ phases:
       - echo ====== Build started ======
       # - liquibase --defaultsFile=liquibase.properties checks run
       - liquibase --defaultsFile=liquibase.properties status --verbose
-      - pwd
-      - ls -alh
-      - ls -alh $CODEBUILD_SRC_DIR_S3syngentademo
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
