@@ -22,6 +22,7 @@ phases:
       - echo ====== Build started ======
       # - liquibase --defaultsFile=liquibase.properties checks run
       - liquibase --defaultsFile=liquibase.properties status --verbose
+      - cat snapshot-dev.json
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
