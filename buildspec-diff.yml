@@ -24,7 +24,6 @@ phases:
       - liquibase --defaultsFile=liquibase.properties status --verbose
       - pwd
       - ls -alh
-      - cat snapshot-dev.json
       # - liquibase --defaultsFile=liquibase.properties history
       
   post_build:
